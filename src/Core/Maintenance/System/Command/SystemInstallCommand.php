@@ -123,9 +123,9 @@ class SystemInstallCommand extends Command
         if ($input->getOption('basic-setup')) {
             $commands[] = [
                 'command' => 'user:create',
-                'username' => 'admin',
+                'username' => (string) EnvironmentHelper::getVariable('DEFAULT_USERNAME', 'admin'),
                 '--admin' => true,
-                '--password' => 'shopware',
+                '--password' => (string) EnvironmentHelper::getVariable('DEFAULT_PASSWORD', 'shopware'),
             ];
 
             if ($application->has('sales-channel:create:storefront')) {
